@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/03 11:37:44 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/05 09:07:22 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,10 @@
 # define PATH '0'
 
 // GAME KEYWORDS
-# define ESC 65307
 # define W 119
-# define UP 65362
 # define A 97
 # define LEFT 65361
 # define S 115
-# define DOWN 65364
 # define D 100
 # define RIGHT 65363
 # define RESTART 114
@@ -54,13 +51,18 @@ typedef struct s_sprite
 	void	*xpm_ptr;
 	int		w;
 	int		h;
-}	t_sprite;
+}			t_sprite;
 
-
+typedef struct
+{
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+}			rectangle;
 
 // INPUT
 
-int     read_keys(int key_pressed, void *param);
-
+int			read_keys(int key_pressed, void *param);
 
 #endif // GAME_H

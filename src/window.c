@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mlx_linux/mlx.h"
 #include "../include/game.h"
 #include "../include/window.h"
+#include "../mlx_linux/mlx.h"
 
 t_window	new_program(int w, int h, char *str)
 {

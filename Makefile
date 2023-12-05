@@ -6,16 +6,18 @@
 #    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2023/12/03 11:21:09 by mkhaing          ###   ########.fr        #
+#    Updated: 2023/12/05 08:28:44 by mkhaing          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_DIR=src/
 LIBMLX = ./mlx_linux
 
-CC		= tcc
-CFLAGS	= -Wall -Wextra -Werror -D LINUX -fsanitize=leak
-LFLAGS  = -L$(LIBMLX) -lmlx -lbsd -lXext -lX11 -lm
+CC		= gcc
+#CFLAGS	= -Wall -Wextra -Werror -D LINUX -fsanitize=leak
+CFLAGS = -D LINUX -fsanitize=leak
+#LFLAGS  = -L$(LIBMLX) -lmlx -lbsd -lXext -lX11 -lm
+LFLAGS = -L$(LIBMLX) -lbsd -lmlx_Linux -lXext -lX11 -lm -lz
 
 RM		= rm -f
 
@@ -33,16 +35,20 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= so_long
 
-all:		${NAME}
+all:		 $(LIBMLX) $(NAME)
 
-$(NAME):	${OBJS}
-		$(CC) $(SRCS) $(LFLAGS) -o $(NAME)
+$(NAME):	 $(OBJS)
+		$(CC) $(OBJS) $(LFLAGS) -o $(NAME)
+
+$(LIBMLX):
+		make -C $(LIBMLX) all
 
 %.o: %.c
-			$(CC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) $(LFLAGS) -Imlx_linux -O3 -c $< -o $@
 
 clean:
 			${RM} ${OBJS}
+			make -C $(LIBMLX) clean
 
 fclean:		clean
 			${RM} ${NAME}

@@ -13,11 +13,11 @@
 #include "../include/game.h"
 #include "../include/window.h"
 
-int     read_keys(int key_pressed, void *param)
+int	read_keys(int key_pressed, void *param)
 {
-        if (key_pressed == ESC)
-                exit(EXIT_SUCCESS);
-        else
-                return (-1);
-        return (0);
+	if (key_pressed == ESC)
+		exit(EXIT_SUCCESS);
+	else
+		return (-1);
+	return (0);
 }
