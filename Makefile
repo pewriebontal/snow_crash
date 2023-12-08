@@ -6,18 +6,19 @@
 #    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2023/12/05 08:28:44 by mkhaing          ###   ########.fr        #
+#    Updated: 2023/12/08 08:33:27 by mkhaing          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_DIR=src/
 LIBMLX = ./mlx_linux
+LIBFT = ./libft
 
-CC		= gcc
+CC		= clang
 #CFLAGS	= -Wall -Wextra -Werror -D LINUX -fsanitize=leak
-CFLAGS = -D LINUX -fsanitize=leak
+CFLAGS = -D LINUX -fsanitize=leak -g
 #LFLAGS  = -L$(LIBMLX) -lmlx -lbsd -lXext -lX11 -lm
-LFLAGS = -L$(LIBMLX) -lbsd -lmlx_Linux -lXext -lX11 -lm -lz
+LFLAGS = -L$(LIBMLX) -L$(LIBFT) -l:libft.a -lbsd -lmlx_Linux -lXext -lX11 -lm -lz
 
 RM		= rm -f
 
@@ -26,7 +27,8 @@ SO_LONG_SRC=$(SRC_DIR)game.c \
 	    $(SRC_DIR)event.c \
 	    $(SRC_DIR)player.c \
 	    $(SRC_DIR)window.c \
-	    $(SRC_DIR)input.c
+	    $(SRC_DIR)input.c \
+		$(SRC_DIR)graphic.c
 			
 	
 SRCS	= $(SO_LONG_SRC)
@@ -35,16 +37,19 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= so_long
 
-all:		 $(LIBMLX) $(NAME)
+all:		$(LIBFT) $(LIBMLX) $(NAME)
 
-$(NAME):	 $(OBJS)
+$(NAME):	$(OBJS)
 		$(CC) $(OBJS) $(LFLAGS) -o $(NAME)
 
 $(LIBMLX):
 		make -C $(LIBMLX) all
 
+$(LIBFT):
+		make -C $(LIBFT) all
+
 %.o: %.c
-			$(CC) $(CFLAGS) $(LFLAGS) -Imlx_linux -O3 -c $< -o $@
+			$(CC) $(CFLAGS) $(LFLAGS) $(LIBFT) -Imlx_linux -O3 -c $< -o $@
 
 clean:
 			${RM} ${OBJS}
