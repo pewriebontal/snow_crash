@@ -57,11 +57,9 @@ void	paint(t_game *r_g_ptr, t_window *r_w_ptr)
 			if (r_g_ptr->real_map.map[row][col] == PLAYER)
 				paint_fr(r_w_ptr, r_g_ptr->sprite.player, col, row);
 			if (r_g_ptr->real_map.map[row][col] == EXIT)
-				paint_fr(r_w_ptr, r_g_ptr->sprite.exit_close, col,
-					row);
+				paint_fr(r_w_ptr, r_g_ptr->sprite.exit_close, col, row);
 			if (r_g_ptr->real_map.map[row][col] == BITBERRY)
-				paint_fr(r_w_ptr, r_g_ptr->sprite.bit_berry, col,
-					row);
+				paint_fr(r_w_ptr, r_g_ptr->sprite.bit_berry, col, row);
 			col++;
 		}
 		row++;

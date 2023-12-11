@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/08 13:09:21 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:12:09 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 # include "window.h"
 # include <stdlib.h>
 
-// KEYS
-
-# define ESC 53
-# define UP 126
-# define DOWN 125
-
 // GAME MAP CODES
 # define PLAYER 'P'
 # define EXIT 'E'
@@ -33,15 +27,26 @@
 # define WALL '1'
 # define PATH '0'
 
-// GAME KEYWORDS
+// KEY CODES
+
+// https://gist.github.com/Azeirah/9611830
+// I dont know why it's hard to find keycodes
+// but here it is
+// ====================	Bon ====
+
+# define ESC 53
+
 # define W 119
 # define A 97
-# define LEFT 65361
 # define S 115
 # define D 100
-# define RIGHT 65363
-# define RESTART 114
 
+# define A_UP 126
+# define A_LEFT 65361
+# define A_DOWN 125
+# define A_RIGHT 65363
+
+// ====================
 # define SPRITE_SIZE 42
 
 # define TRUE 1
@@ -95,8 +100,9 @@ void			load_asset(t_game *r_g_ptr, t_window *r_w_ptr);
 void			paint(t_game *r_g_ptr, t_window *r_w_ptr);
 
 void			paint_fr(t_window *r_w_ptr, void *img, int col, int row);
+int				exit_program(t_window *window, t_game *game);
 
+void			process_input(t_game *r_g_ptr, int keycode);
 void			read_from_path(int fd, t_game *r_g_ptr);
-int				read_keys(int key_pressed, t_window *r_g_ptr);
-
+int				read_keys(int keycode, t_window *r_w_ptr, t_game *r_g_ptr);
 #endif // GAME_H

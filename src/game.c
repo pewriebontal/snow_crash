@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/08 13:14:39 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:35:38 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,16 @@ int	main(int argc, char *argv[])
 	read_from_path(fd, &real_g);
 	print_map(&real_g);
 	load_asset(&real_g, &real_w);
-
-	while(1)
+	while (1)
 	{
 		paint(&real_g, &real_w);
 		printf("painted\n");
-	    usleep(16666);
+		usleep(16666);
 	}
-
-
-	
 	//	mlx_key_hook (real_g.win_ptr, read_keys);
+	mlx_key_hook(real_w.win_ptr, read_keys, &real_g);
 	//	mlx_loop_hook(real_g.mlx_ptr, update_game, NULL);
+	mlx_hook(real_w.win_ptr, 17, 0, exit_program, &real_g);
 	mlx_loop(real_w.mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2023/12/08 08:33:27 by mkhaing          ###   ########.fr        #
+#    Updated: 2023/12/11 15:48:14 by mkhaing          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,6 @@ RM		= rm -f
 
 SO_LONG_SRC=$(SRC_DIR)game.c \
 	    $(SRC_DIR)map.c \
-	    $(SRC_DIR)event.c \
-	    $(SRC_DIR)player.c \
 	    $(SRC_DIR)window.c \
 	    $(SRC_DIR)input.c \
 		$(SRC_DIR)graphic.c
