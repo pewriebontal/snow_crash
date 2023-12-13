@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/11 18:12:09 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:51:03 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 # define WALL '1'
 # define PATH '0'
 
+# define P_UP 1111
+# define P_LEFT 2222
+# define P_DOWN 3333
+# define P_RIGHT 4444
+
 // KEY CODES
 
 // https://gist.github.com/Azeirah/9611830
@@ -34,18 +39,19 @@
 // but here it is
 // ====================	Bon ====
 
-# define ESC 53
+# define ESC 65307
 
 # define W 119
 # define A 97
 # define S 115
 # define D 100
 
-# define A_UP 126
+# define A_UP 65362
 # define A_LEFT 65361
-# define A_DOWN 125
+# define A_DOWN 65364
 # define A_RIGHT 65363
 
+# define SECRET_KEY 93 // ]
 // ====================
 # define SPRITE_SIZE 42
 
@@ -89,6 +95,11 @@ typedef struct s_map
 
 typedef struct s_game
 {
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_window	window;
+	int			player_direction;
+	int			portal_open;
 	t_map		real_map;
 	t_sprite	sprite;
 
@@ -96,13 +107,15 @@ typedef struct s_game
 
 // INPUT
 void			print_map(t_game *real_g);
-void			load_asset(t_game *r_g_ptr, t_window *r_w_ptr);
-void			paint(t_game *r_g_ptr, t_window *r_w_ptr);
+void			load_asset(t_game *r_g_ptr);
 
-void			paint_fr(t_window *r_w_ptr, void *img, int col, int row);
-int				exit_program(t_window *window, t_game *game);
+t_game			new_program(int w, int h, char *window_title);
+int				paint(t_game *r_g_ptr);
 
-void			process_input(t_game *r_g_ptr, int keycode);
+void			paint_fr(t_game *r_g_ptr, void *img, int col, int row);
+int				exit_program(t_game *game);
+
+void			process_input(int keycode, t_game *r_g_ptr);
 void			read_from_path(int fd, t_game *r_g_ptr);
-int				read_keys(int keycode, t_window *r_w_ptr, t_game *r_g_ptr);
+int				read_keys(int keycode, t_game *r_g_ptr);
 #endif // GAME_H

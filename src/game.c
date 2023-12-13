@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/11 18:35:38 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:41:30 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,42 @@ int	update_game(void *param)
 
 int	main(int argc, char *argv[])
 {
-	t_window	real_w;
-	t_game		real_g;
-	int			fd;
+	t_game	real_g;
+	int		fd;
 
-	init_window(&real_w);
-	real_w = new_program(real_w.width, real_w.height, WINDOW_TITLE);
-	if (!real_w.win_ptr || !real_w.mlx_ptr)
+	init_window(&real_g.window);
+	real_g = new_program(real_g.window.width, real_g.window.height,
+			WINDOW_TITLE);
+	if (!real_g.win_ptr || !real_g.mlx_ptr)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	read_from_path(fd, &real_g);
 	print_map(&real_g);
-	load_asset(&real_g, &real_w);
-	while (1)
-	{
-		paint(&real_g, &real_w);
-		printf("painted\n");
-		usleep(16666);
-	}
+	load_asset(&real_g);
+	real_g.portal_open = TRUE;
+	real_g.player_direction = P_RIGHT;
+	/*
+		while(1)
+		{
+			real_g.player_direction = P_RIGHT;
+			paint(&real_g, &real_w);
+			usleep(1000000);
+			real_g.player_direction = P_DOWN;
+			paint(&real_g, &real_w);
+			usleep(1000000);
+			real_g.player_direction = P_LEFT;
+			paint(&real_g, &real_w);
+			usleep(1000000);
+			real_g.player_direction = P_UP;
+			paint(&real_g, &real_w);
+			usleep(1000000);
+		}
+	*/
+	// paint(&real_g);
 	//	mlx_key_hook (real_g.win_ptr, read_keys);
-	mlx_key_hook(real_w.win_ptr, read_keys, &real_g);
-	//	mlx_loop_hook(real_g.mlx_ptr, update_game, NULL);
-	mlx_hook(real_w.win_ptr, 17, 0, exit_program, &real_g);
-	mlx_loop(real_w.mlx_ptr);
+	mlx_hook(real_g.win_ptr, 17, 0, exit_program, &real_g);
+	mlx_key_hook(real_g.win_ptr, read_keys, &real_g);
+	mlx_loop_hook(real_g.mlx_ptr, paint, &real_g);
+	mlx_loop(real_g.mlx_ptr);
 	return (0);
 }
