@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:59:35 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 10:50:07 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:01:55 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	is_valid_map(t_game *g_ptr)
 {
-	return (1);
+	return (TRUE);
 }
-
+/*
 #include <stdio.h>
 
 #define ROWS 10
@@ -101,3 +101,4 @@ int	main(void)
 	}
 	return (0);
 }
+*/

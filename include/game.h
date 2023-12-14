@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 15:58:37 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:00:10 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int				exit_program(t_game *game);
 void			read_from_path(int fd, t_game *g_ptr);
 void			load_asset(t_game *g_ptr);
 void 			locate_player(t_game *g_ptr);
+int	is_valid_map(t_game *g_ptr);
 
 void			print_map(t_game *g_ptr);
 

@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 15:58:55 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:02:40 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,36 @@
 #include "../include/window.h"
 #include <fcntl.h>
 
-// Function to check if two rectangles collide
-int	is_colliding(t_rectangle rect1, t_rectangle rect2)
+
+void start_game(t_game *g_ptr, int fd)
 {
-	if (rect1.x + rect1.width >= rect2.x)
-	{
-		return (1);
-	}
-	else if (rect1.x <= rect2.x + rect2.width)
-	{
-		return (1);
-	}
-	else if (rect1.y + rect1.height >= rect2.y)
-	{
-		return (1);
-	}
-	else if (rect1.y <= rect2.y + rect2.height)
-	{
-		return (1);
-	}
-	else
-		return (0); // Not colliding
+	read_from_path(fd, g_ptr);
+	print_map(g_ptr);
+	load_asset(g_ptr);
+	locate_player(g_ptr);
+
+	g_ptr->berry_count = 1;
+	g_ptr->portal_open = FALSE;
+	g_ptr->player.direction = P_RIGHT;
+
+
+	if(is_valid_map(g_ptr) == FALSE)
+		exit_program(g_ptr);
 }
 
-int	update_game(void *param)
+int	update_game(t_game *g_ptr)
 {
-	// Your game logic goes here
-	// Check for collision between player and an object
-	//   if (isColliding(playerRect, objectRect)) {
-	// Handle the collision (e.g., collect item, increase score)
-	//   }
-	return (0); // Returning 0 keeps the game loop running
+	open_portal(g_ptr);
+	paint(g_ptr);
+	return (0); 
 }
+
+
+int game_over(t_game *g_ptr)
+{
+	
+}
+
 
 int	main(int argc, char *argv[])
 {
@@ -58,34 +56,12 @@ int	main(int argc, char *argv[])
 	if (!real_g.win_ptr || !real_g.mlx_ptr)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
-	read_from_path(fd, &real_g);
-	print_map(&real_g);
-	load_asset(&real_g);
-	locate_player(&real_g);
-	real_g.portal_open = FALSE;
-	real_g.player.direction = P_RIGHT;
-	/*
-		while(1)
-		{
-			real_g.player_direction = P_RIGHT;
-			paint(&real_g, &real_w);
-			usleep(1000000);
-			real_g.player_direction = P_DOWN;
-			paint(&real_g, &real_w);
-			usleep(1000000);
-			real_g.player_direction = P_LEFT;
-			paint(&real_g, &real_w);
-			usleep(1000000);
-			real_g.player_direction = P_UP;
-			paint(&real_g, &real_w);
-			usleep(1000000);
-		}
-	*/
-	// paint(&real_g);
-	//	mlx_key_hook (real_g.win_ptr, read_keys);
+
+	start_game(&real_g, fd);
+
 	mlx_hook(real_g.win_ptr, 17, 0, exit_program, &real_g);
 	mlx_key_hook(real_g.win_ptr, read_keys, &real_g);
-	mlx_loop_hook(real_g.mlx_ptr, paint, &real_g);
+	mlx_loop_hook(real_g.mlx_ptr, update_game, &real_g);
 	mlx_loop(real_g.mlx_ptr);
 	return (0);
 }

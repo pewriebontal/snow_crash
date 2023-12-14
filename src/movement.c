@@ -6,12 +6,24 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:40:52 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 16:09:54 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:59:02 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/game.h"
+
+
+
+void open_portal(t_game *g_ptr)
+{
+    if(g_ptr->portal_open == FALSE)
+    {
+        if (g_ptr->berry_count == 0)
+            g_ptr->portal_open = TRUE;
+    }
+}
+
 
 void	process_movement(t_game *g_ptr, int n_row, int n_col)
 {
@@ -35,13 +47,14 @@ void	process_movement(t_game *g_ptr, int n_row, int n_col)
         g_ptr->real_map.map[new_row][new_col] = PLAYER;
         g_ptr->player.row = new_row;
         g_ptr->player.col = new_col;
+        g_ptr->berry_count--;
     }
     if (g_ptr->real_map.map[new_row][new_col] == EXIT)
     {
         if (g_ptr->portal_open == TRUE)
             exit_program(g_ptr);
+            //TODO: game over
         else
             return ;
     }
-
 }
