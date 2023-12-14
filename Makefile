@@ -6,7 +6,7 @@
 #    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2023/12/11 15:48:14 by mkhaing          ###   ########.fr        #
+#    Updated: 2023/12/14 14:50:27 by mkhaing          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SO_LONG_SRC=$(SRC_DIR)game.c \
 	    $(SRC_DIR)map.c \
 	    $(SRC_DIR)window.c \
 	    $(SRC_DIR)input.c \
-		$(SRC_DIR)graphic.c
+		$(SRC_DIR)graphic.c \
+		$(SRC_DIR)movement.c \
 			
 	
 SRCS	= $(SO_LONG_SRC)

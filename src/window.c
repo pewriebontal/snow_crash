@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:25:32 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/13 21:21:07 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/13 22:09:35 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ t_game	new_program(int w, int h, char *window_title)
 		h});
 }
 
-int	exit_program(t_game *r_g_ptr)
+int	exit_program(t_game *g_ptr)
 {
-	if (r_g_ptr)
+	if (g_ptr)
 	{
-		mlx_destroy_window(r_g_ptr->mlx_ptr, r_g_ptr->win_ptr);
-		mlx_destroy_display(r_g_ptr->mlx_ptr);
+		mlx_destroy_window(g_ptr->mlx_ptr, g_ptr->win_ptr);
+		mlx_destroy_display(g_ptr->mlx_ptr);
 	}
-	if (r_g_ptr)
-		free(r_g_ptr);
+	if (g_ptr)
+		free(g_ptr);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

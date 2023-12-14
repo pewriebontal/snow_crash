@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/13 21:41:30 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:58:55 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 
 // Function to check if two rectangles collide
-int	is_colliding(rectangle rect1, rectangle rect2)
+int	is_colliding(t_rectangle rect1, t_rectangle rect2)
 {
 	if (rect1.x + rect1.width >= rect2.x)
 	{
@@ -61,8 +61,9 @@ int	main(int argc, char *argv[])
 	read_from_path(fd, &real_g);
 	print_map(&real_g);
 	load_asset(&real_g);
-	real_g.portal_open = TRUE;
-	real_g.player_direction = P_RIGHT;
+	locate_player(&real_g);
+	real_g.portal_open = FALSE;
+	real_g.player.direction = P_RIGHT;
 	/*
 		while(1)
 		{

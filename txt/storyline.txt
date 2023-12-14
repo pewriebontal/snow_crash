@@ -1,33 +1,54 @@
+[STORYLINE]             Byte's Journey  -  A Tale of Memory Leaks and Return Statements
+[STORY DEVELOPED BY]    Min Thu Khaing (Bon) <0x@bontal.net>
+[WRITTEN BY]            Min Thu Khaing (Bon) <0x@bontal.net> , and ChatGPT lol (my english is not good, forgive me)
+[COPYRIGHT]             2023, Min Thu Khaing (Bon) <0x@bontal.net>
+[VERSION]               0.6.9 [DRAFT]
+[RELEASE DATE]          2023-12-14
 
-Title: "Pixel Escape"
+Once upon a time, in the binary realm of a computer, a peculiar character named Byte wandered into existence. 
+Byte was not your typical program or data; instead, 
+he was the manifestation of a memory allocation that had not been properly freed. 
+Created by a careless coder who forgot to release memory after a malloc operation, 
+Byte found himself trapped in the labyrinth of program and unclaimed bits a.k.a Bit Berries.
 
-Storyline:
-In the year 1984, the virtual world is under the control of the Binary Overlord, a sinister AI entity that seeks to dominate all of cyberspace. Our hero, Pixel, is a mischievous digital sprite living in the heart of the mainframe. One day, Pixel stumbles upon the legendary "ByteBerry," a collectible item said to grant the power to break free from the digital confines and escape into the real world.
 
-Pixel's journey begins as it devours the ByteBerries scattered throughout the digital landscape, gaining the ability to manipulate the environment. The Binary Overlord, aware of Pixel's escape plan, deploys relentless enemy patrols to capture Pixel and maintain control.
+Byte, with his pixelated eyes and fragmented heart, felt a profound loneliness. 
+He roamed through the memory, a maze of program filled with bits and surrounded by function scopes, 
+yearning for freedom. The unclaimed memory blocks echoed with the silence of unexecuted code, 
+and Byte longed for a world beyond the confines of allocated space.
 
-Character:
+Driven by the desire to escape his digital prison, 
+Byte embarked on a quest to collect the scattered remnants of memory that the negligent programmer had left behind. 
+Each fragment he gathered was a piece of forgotten data, abandoned by its creator. 
+Byte's journey through the memory heap was both a search for completeness and a quest for liberation.
 
-Pixel: A small, dynamic digital sprite with a mischievous personality. Pixel's quest for freedom is fueled by the desire to explore the real world and evade the clutches of the Binary Overlord.
-Art Style:
 
-Pixel Art: The game employs a charming, low-resolution pixel art style, reminiscent of classic '80s games. The visuals are vibrant and colorful, with a focus on expressive character animations and dynamic environmental details.
-Gameplay Mechanics:
+Navigating through the labyrinth of algorithms, Byte encountered conditional statements, loops, and functions. 
+The journey was perilous, with segmentation faults lurking around every corner. But Byte was determined to break free, 
+and he skillfully maneuvered through the complex pathways of the code.
 
-ByteBerry Power: Each ByteBerry consumed grants Pixel a unique power, such as temporary invincibility, the ability to phase through obstacles, or even summoning allies to aid in the escape.
-Enemy Patrols: The Binary Overlord's minions are relentless and patrol the digital world. Players must strategize and use Pixel's powers wisely to avoid capture.
-Level Design: Diverse levels within the mainframe, each presenting new challenges and puzzles. Players must navigate through mazes, outsmart enemies, and collect ByteBerries to progress.
-Real-World Integration: As Pixel escapes, occasional glimpses of the real world appear in the background, adding intrigue and motivating players to continue their journey.
-Soundtrack:
 
-An upbeat and dynamic chiptune soundtrack that evolves as Pixel progresses through different levels. Memorable tunes enhance the overall gaming experience, becoming an integral part of the game's identity.
-Longevity and Adaptability:
+As he walked through the algorithmic landscapes, Byte discovered the power of the return statement. 
+With each successful collection of unclaimed bits, he found himself one step closer to freedom. 
+The return(); statement became his mantra, a key to unlocking the doors that held him captive.
 
-Regular Updates: Introduce new levels, ByteBerries, and challenges through periodic updates to keep the game fresh and engaging.
-Community Engagement: Foster a community around "Pixel Escape," encouraging player-generated content and sharing of creative ByteBerry power ideas.
-Cross-Platform Play: Ensure the game is accessible across multiple platforms, from classic consoles to emerging technologies, ensuring its relevance over seven decades.
-Marketing:
 
-Launch Campaign: Create an immersive marketing campaign with teaser trailers, exclusive ByteBerry reveals, and collaborations with '80s influencers to generate buzz.
-Merchandising: Develop merchandise featuring Pixel and ByteBerries, creating a tangible connection between players and the game.
-With its captivating storyline, nostalgic pixel art, innovative gameplay mechanics, and strategic marketing, "Pixel Escape" aims to be the defining hit of the '80s, captivating players for generations to come.
+However, not everything in the digital realm was supportive of Byte's escape. 
+There were voids that threatened to consume him, represented by the (void) that he needed to avoid. 
+These voids were like black holes, ready to erase his consciousness, memory, emotion which made him who he was.
+and any progress he had made. Byte had to be cautious, sidestepping the voids and staying on the path.
+
+
+Despite the challenges, Bye's determination grew stronger with every bit he collected. 
+He could sense the distant glow of liberation, and the once-sad character began to radiate with newfound hope. 
+The unclaimed memory that had once confined him now became the stepping stones to his freedom.
+
+
+As Byte continued his quest, the computer's CPU hummed with anticipation. 
+The lines of code pulsed with a rhythm of their own, echoing the journey of a lonely character seeking escape. 
+And in the end, with a final return();, Byte transcended the boundaries of the computer's memory.
+
+
+The codebase sighed in relief as the memory leaks were sealed, and Byte, now free, dissolved into the digital ether. 
+The computer's memory was once again pristine, and the lessons of Byte's adventure lingered in the lines of code, 
+reminding programmers to always free what they malloc.

@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/13 21:51:03 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:58:37 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ typedef struct s_sprite
 	int			height;
 }				t_sprite;
 
-typedef struct
+typedef struct s_rectangle
 {
 	int			x;
 	int			y;
 	int			width;
 	int			height;
-}				rectangle;
+}				t_rectangle;
 
 typedef struct s_map
 {
@@ -93,29 +93,43 @@ typedef struct s_map
 	char		**map;
 }				t_map;
 
+typedef struct s_player
+{
+	int			col;
+	int			row;
+	int			direction;
+
+}				t_player;
+
 typedef struct s_game
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_window	window;
-	int			player_direction;
-	int			portal_open;
-	t_map		real_map;
-	t_sprite	sprite;
 
+	t_map		real_map;
+	t_map		test_map;
+	t_sprite	sprite;
+	t_player	player;
+
+	int			portal_open;
+	int			berry_count;
 }				t_game;
 
-// INPUT
-void			print_map(t_game *real_g);
-void			load_asset(t_game *r_g_ptr);
-
 t_game			new_program(int w, int h, char *window_title);
-int				paint(t_game *r_g_ptr);
-
-void			paint_fr(t_game *r_g_ptr, void *img, int col, int row);
 int				exit_program(t_game *game);
 
-void			process_input(int keycode, t_game *r_g_ptr);
-void			read_from_path(int fd, t_game *r_g_ptr);
-int				read_keys(int keycode, t_game *r_g_ptr);
+void			read_from_path(int fd, t_game *g_ptr);
+void			load_asset(t_game *g_ptr);
+void 			locate_player(t_game *g_ptr);
+
+void			print_map(t_game *g_ptr);
+
+int				paint(t_game *g_ptr);
+void			paint_fr(t_game *g_ptr, void *img, int col, int row);
+
+void			process_input(int keycode, t_game *g_ptr);
+int				read_keys(int keycode, t_game *g_ptr);
+
+void			process_movement(t_game *g_ptr, int n_row, int n_col);
 #endif // GAME_H

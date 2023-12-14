@@ -6,13 +6,13 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:59:35 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/08 12:49:46 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:50:07 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game.h"
 
-int	is_valid_map(t_game *r_g_ptr)
+int	is_valid_map(t_game *g_ptr)
 {
 	return (1);
 }
@@ -39,7 +39,7 @@ void	dfs(char grid[ROWS][COLS], int row, int col)
 		newCol = col + moves[i][1];
 		// Check if the new cell is within bounds and is a coin
 		if (newRow >= 0 && newRow < ROWS && newCol >= 0 && newCol < COLS
-			&& (grid[newRow][newCol] == 'C' || grid[newRow][newCol] == '0'))
+			&& (grid[newRow][newCol] == 'C' || grid[newRow][newCol] == '0' || grid[newRow][newCol] == 'E'))
 		{
 			dfs(grid, newRow, newCol);
 		}
@@ -70,7 +70,7 @@ int	canCollectAllCoins(char grid[ROWS][COLS])
 	{
 		for (int j = 0; j < COLS; ++j)
 		{
-			if (grid[i][j] == 'C')
+			if (grid[i][j] == 'C' || grid[i][j] == 'E')
 				return (0); // Not all coins can be collected
 		}
 	}
@@ -79,11 +79,16 @@ int	canCollectAllCoins(char grid[ROWS][COLS])
 
 int	main(void)
 {
-	char	grid[ROWS][COLS] = {"11111111111111111111111",
-			"1C000000000000100000001", "1000000000000000000C001",
-			"1101110000111100C000001", "1E000000001111000000001",
-			"1111111100011100P000001", "10110000000001000000001",
-			"10C00000000001000000001", "1111110000111100000C001",
+	char	grid[ROWS][COLS] = {
+			"11111111111111111111111",
+			"1C000000000000100000001",
+			"1000000000000000000C001",
+			"1111110000111100C000001",
+			"1E000000001111000000001",
+			"1111111100011100P000001", 
+			"10110000000001000000001",
+			"10C00000000001000000001", 
+			"1111110000111100000C001",
 			"10000000000C00000000001"};
 
 	if (canCollectAllCoins(grid))

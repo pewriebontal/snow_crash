@@ -1,0 +1,13 @@
+1111111111 0
+10000000E1 1
+10100000P1 2     ROW
+1000001001 3
+1111111111 4    Move___UP{ROW-1, COL}
+		 		MoveRight{ROW, COL+1}
+0123456789      Move_Down{ROW+1, COL}
+    			Move_Left{ROW, COL-1}
+    COL		 
+		 		P_POS = {3,8}
+		 		P_NewPOS= MOVE()
+		 		P_POS = SET TO 0
+		 		P_POS = P_NewPOS
