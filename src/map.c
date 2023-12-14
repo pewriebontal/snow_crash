@@ -58,7 +58,7 @@ void	print_map(t_game *g_ptr)
 	}
 }
 
-void locate_player(t_game *g_ptr)
+void	locate_player(t_game *g_ptr)
 {
 	int	row;
 	int	col;
@@ -79,12 +79,7 @@ void locate_player(t_game *g_ptr)
 		}
 		row++;
 	}
-
 }
-
-
-
-
 
 /*
 

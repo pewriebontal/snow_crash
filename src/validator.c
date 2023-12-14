@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:59:35 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 17:01:55 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/14 21:24:28 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,41 @@
 
 int	is_valid_map(t_game *g_ptr)
 {
+	if (can_reach_all(g_ptr) == FALSE)
+		return (FALSE);
+	else if (is_square(g_ptr) == FALSE)
+	{
+		return (FALSE);
+	}
+	else if (is_surrounded_by_wall(g_ptr) == FALSE)
+	{
+		return (FALSE);
+	}
 	return (TRUE);
 }
+
+void	validator_main(t_game *g_ptr, int row, int col)
+{
+	
+}
+	
+
+
+int	is_surrounded_by_wall(t_game *g_ptr)
+{
+	return (TRUE);
+}
+
+int	is_square(t_game *g_ptr)
+{
+	return (TRUE);
+}
+
+int	can_reach_all(t_game *g_ptr)
+{
+	return (TRUE);
+}
+
 /*
 #include <stdio.h>
 
@@ -39,7 +72,8 @@ void	dfs(char grid[ROWS][COLS], int row, int col)
 		newCol = col + moves[i][1];
 		// Check if the new cell is within bounds and is a coin
 		if (newRow >= 0 && newRow < ROWS && newCol >= 0 && newCol < COLS
-			&& (grid[newRow][newCol] == 'C' || grid[newRow][newCol] == '0' || grid[newRow][newCol] == 'E'))
+			&& (grid[newRow][newCol] == 'C' || grid[newRow][newCol] == '0'
+				|| grid[newRow][newCol] == 'E'))
 		{
 			dfs(grid, newRow, newCol);
 		}
@@ -85,12 +119,11 @@ int	main(void)
 			"1000000000000000000C001",
 			"1111110000111100C000001",
 			"1E000000001111000000001",
-			"1111111100011100P000001", 
+			"1111111100011100P000001",
 			"10110000000001000000001",
-			"10C00000000001000000001", 
+			"10C00000000001000000001",
 			"1111110000111100000C001",
 			"10000000000C00000000001"};
-
 	if (canCollectAllCoins(grid))
 	{
 		printf("The player can collect all coins.\n");
