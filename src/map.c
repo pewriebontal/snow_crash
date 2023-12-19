@@ -6,50 +6,54 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:23 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 15:56:17 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:16:05 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game.h"
 #include "../libft/gnl.h"
 
-void	read_from_path(int fd, t_game *g_ptr)
+void	read_from_path(int fd, t_map *m_ptr)
 {
 	int		i;
 	char	*buffer;
 
 	i = 0;
-	g_ptr->real_map.map = (char **)malloc(sizeof(char) * 750);
+	buffer = NULL;
+	m_ptr->map = malloc(sizeof(char) * 69420);
 	while (1)
 	{
 		buffer = get_next_line(fd);
 		if (!buffer)
 			break ;
-		g_ptr->real_map.map[i] = buffer;
+		m_ptr->map[i] = buffer;
 		i++;
 	}
+	m_ptr->map[i] = NULL;
+	free(buffer);
+	buffer = NULL;
 }
 
-void	print_map(t_game *g_ptr)
+void	print_map(t_map *m_ptr)
 {
 	int	row;
 	int	col;
 
 	row = 0;
-	while (g_ptr->real_map.map[row])
+	while (m_ptr->map[row])
 	{
 		col = 0;
-		while (g_ptr->real_map.map[row][col])
+		while (m_ptr->map[row][col])
 		{
-			if (g_ptr->real_map.map[row][col] == WALL)
+			if (m_ptr->map[row][col] == WALL)
 				ft_printf("1");
-			if (g_ptr->real_map.map[row][col] == PATH)
+			if (m_ptr->map[row][col] == PATH)
 				ft_printf("0");
-			if (g_ptr->real_map.map[row][col] == PLAYER)
+			if (m_ptr->map[row][col] == PLAYER)
 				ft_printf("P");
-			if (g_ptr->real_map.map[row][col] == EXIT)
+			if (m_ptr->map[row][col] == EXIT)
 				ft_printf("E");
-			if (g_ptr->real_map.map[row][col] == BITBERRY)
+			if (m_ptr->map[row][col] == BITBERRY)
 				ft_printf("C");
 			col++;
 		}
@@ -79,6 +83,27 @@ void	locate_player(t_game *g_ptr)
 		}
 		row++;
 	}
+}
+
+void	get_map_size(t_map *m_ptr)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (m_ptr->map[row])
+	{
+		col = 0;
+		while (m_ptr->map[row][col])
+		{
+			col++;
+		}
+		row++;
+	}
+	m_ptr->map_col = col - 1;
+	m_ptr->map_row = row;
+	ft_printf("map_col: %d\n", m_ptr->map_col);
+	ft_printf("map_row: %d\n", m_ptr->map_row);
 }
 
 /*

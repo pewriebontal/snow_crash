@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 20:47:29 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:34:40 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,70 +14,110 @@
 #include "../include/window.h"
 #include <fcntl.h>
 
-void start_game(t_game *g_ptr, int fd)
+void	first_run(t_game *g_ptr, int fd)
 {
-	read_from_path(fd, g_ptr);
-	print_map(g_ptr);
-	load_asset(g_ptr);
-	locate_player(g_ptr);
-	g_ptr->count.berry = 1;
+	read_from_path(fd, &g_ptr->test_map);
 	g_ptr->portal_open = FALSE;
+	g_ptr->count.berry = 0;
+	g_ptr->count.exit = 0;
+	g_ptr->count.player = 0;
+	g_ptr->count.wall = 0;
+	g_ptr->count.path = 0;
+	count_items(g_ptr, &g_ptr->test_map);
+	print_map(&g_ptr->test_map);
+	get_map_size(&g_ptr->test_map);
+	if (is_valid_map(g_ptr) == FALSE)
+	{
+		ft_printf("Error\n");
+		exit_program(g_ptr);
+	}
+}
+
+void	start_game(t_game *g_ptr, int fd)
+{
+	g_ptr->portal_open = FALSE;
+	g_ptr->count.berry = 0;
+	g_ptr->count.exit = 0;
+	g_ptr->count.player = 0;
+	g_ptr->count.wall = 0;
+	g_ptr->count.path = 0;
+	read_from_path(fd, &g_ptr->real_map);
+	print_map(&g_ptr->real_map);
+	load_asset(g_ptr);
+	get_map_size(&g_ptr->real_map);
+	locate_player(g_ptr);
 	g_ptr->player.direction = P_RIGHT;
 	g_ptr->player.move_count = 0;
 	g_ptr->is_use_cheat = FALSE;
+	count_items(g_ptr, &g_ptr->real_map);
 	ft_printf("[STEPS] %d\n", g_ptr->player.move_count);
-	if (is_valid_map(g_ptr) == FALSE)
-		exit_program(g_ptr);
 }
 
-int update_game(t_game *g_ptr)
+int	update_game(t_game *g_ptr)
 {
-	open_portal(g_ptr);
 	paint(g_ptr);
+	open_portal(g_ptr);
 	return (0);
 }
 
-int game_over(t_game *g_ptr)
+int	game_over(t_game *g_ptr)
 {
 	if (g_ptr->is_use_cheat == TRUE)
 	{
 		if (g_ptr->go_code == GO_WIN)
-			ft_printf("[Game Over] You Escaped using cheat, hope you're happy!\n");
+			ft_printf("%s%s\n", MESSAGE_WIN_CHEAT_1, MESSAGE_WIN_CHEAT_2);
 		else if (g_ptr->go_code == GO_LOSE)
-			ft_printf("[Game Over] You Cheated and still lose! LoL\n");
+			ft_printf("%s\n", MESSAGE_LOSE_CHEAT);
 		else if (g_ptr->go_code == GO_QUIT)
-			ft_printf("[Game Over] You Cheated and still quit? [BIG BIG] Skill Issue!\n");
+			ft_printf("%s%s\n", MESSAGE_QUIT_CHEAT_1, MESSAGE_QUIT_CHEAT_2);
 		else
-			ft_printf("[Game Over] Skill Issue!\n");
+			ft_printf("%s\n", MESSAGE_SKILL_ISSUE);
 		exit_program(g_ptr);
 	}
 	else if (g_ptr->is_use_cheat == FALSE)
 	{
 		if (g_ptr->go_code == GO_WIN)
-			ft_printf("[Game Over] You Escaped!\n");
+			ft_printf("%s\n", MESSAGE_WIN);
 		else if (g_ptr->go_code == GO_LOSE)
-			ft_printf("[Game Over] You Died!\n");
+			ft_printf("%s\n", MESSAGE_LOSE);
 		else if (g_ptr->go_code == GO_QUIT)
-			ft_printf("[Game Over] Skill Issue!\n");
+			ft_printf("%s\n", MESSAGE_SKILL_ISSUE);
 		else
-			ft_printf("[Game Over] Skill Issue!\n");
+			ft_printf("%s\n", MESSAGE_SKILL_ISSUE);
 		exit_program(g_ptr);
 	}
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_game real_g;
-	int fd;
+	t_game	real_g;
+	int		fd;
 
-	init_window(&real_g.window);
+	if (argc != 2 || ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber",
+			4) != 0)
+	{
+		ft_printf("Error\n");
+		ft_printf("Usage: ./so_long [map.ber]\n");
+		return (1);
+	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Error\n");
+		ft_printf("Map not found\n");
+		return (1);
+	}
+	first_run(&real_g, fd);
+	close(fd);
+	init_window(&real_g.window, &real_g.test_map);
 	real_g = new_program(real_g.window.width, real_g.window.height,
-						 WINDOW_TITLE);
+			WINDOW_TITLE);
 	if (!real_g.win_ptr || !real_g.mlx_ptr)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	start_game(&real_g, fd);
+	close(fd);
 	mlx_hook(real_g.win_ptr, 17, 0, game_over, &real_g);
 	mlx_key_hook(real_g.win_ptr, read_keys, &real_g);
 	mlx_loop_hook(real_g.mlx_ptr, update_game, &real_g);

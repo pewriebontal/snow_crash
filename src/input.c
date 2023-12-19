@@ -6,39 +6,39 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:18 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 20:35:51 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:36:51 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game.h"
 #include "../include/window.h"
 
-int read_keys(int keycode, t_game *g_ptr)
+int	read_keys(int keycode, t_game *g_ptr)
 {
 	if (keycode == W || keycode == A || keycode == S || keycode == D)
 		process_input(keycode, g_ptr);
-	else if (keycode == A_UP || keycode == A_LEFT || keycode == A_DOWN || keycode == A_RIGHT)
+	else if (keycode == A_UP || keycode == A_LEFT || keycode == A_DOWN
+		|| keycode == A_RIGHT)
 		process_input(keycode, g_ptr);
 	else if (keycode == ESC || keycode == Q)
 	{
 		g_ptr->go_code = GO_QUIT;
 		game_over(g_ptr);
 	}
-
 	else if (keycode == SECRET_KEY)
 	{
-		g_ptr->is_use_cheat = TRUE;
 		if (g_ptr->portal_open == FALSE)
 			g_ptr->portal_open = TRUE;
 		else
 			g_ptr->portal_open = FALSE;
+		g_ptr->is_use_cheat = TRUE;
 	}
 	else
 		return (-1);
 	return (0);
 }
 
-void process_input(int keycode, t_game *g_ptr)
+void	process_input(int keycode, t_game *g_ptr)
 {
 	if (keycode == W || keycode == A_UP)
 	{

@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 07:10:29 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/13 21:22:09 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:17:06 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ typedef struct s_window
 	int	width;
 }		t_window;
 
-int		init_window(t_window *r_w_ptr);
 #endif

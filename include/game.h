@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 20:36:10 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:39:03 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@
 # define ESC 65307
 # define Q 113
 
-#define GO_WIN 5555
-#define GO_LOSE 6666
-#define GO_QUIT 7777
-#define GO_CHEAT 8888
+# define GO_WIN 5555
+# define GO_LOSE 6666
+# define GO_QUIT 7777
+# define GO_CHEAT 8888
 
 # define W 119
 # define A 97
@@ -60,6 +60,21 @@
 # define SECRET_KEY 93 // ]
 // ====================
 # define SPRITE_SIZE 42
+
+# define MESSAGE_ACHIEV_42_1 "[Achievement Unlocked] The Answer to Life,"
+# define MESSAGE_ACHIEV_42_2 " the Universe, and Everything!"
+# define MESSAGE_ACHIEV_69 "[Achievement Unlocked] Nice!"
+
+# define MESSAGE_WIN_CHEAT_1 "[Game Over] You Escaped using cheat,"
+# define MESSAGE_WIN_CHEAT_2 " hope you're happy!"
+
+# define MESSAGE_LOSE_CHEAT "[Game Over] You Cheated and still lose! LoLL"
+# define MESSAGE_QUIT_CHEAT_1 "[Game Over] You Cheated and still quit?"
+# define MESSAGE_QUIT_CHEAT_2 " [BIG BIG] Skill Issue!"
+# define MESSAGE_SKILL_ISSUE "[Game Over] Skill Issue!"
+
+# define MESSAGE_WIN "[Game Over] You Escaped!"
+# define MESSAGE_LOSE "[Game Over] You Died!"
 
 # define TRUE 1
 # define FALSE 0
@@ -96,15 +111,14 @@ typedef struct s_count
 {
 	int			portal;
 	int			berry;
-	int 		player;
+	int			player;
 	int			exit;
 	int			wall;
 	int			path;
 	int			row;
 	int			col;
-	
-}				t_count;
 
+}				t_count;
 
 typedef struct s_map
 {
@@ -118,7 +132,7 @@ typedef struct s_player
 	int			col;
 	int			row;
 	int			direction;
-	int 		move_count;
+	int			move_count;
 
 }				t_player;
 
@@ -134,34 +148,43 @@ typedef struct s_game
 	t_sprite	sprite;
 	t_player	player;
 
-	int 		is_use_cheat;
+	int			is_use_cheat;
 	int			portal_open;
-	int 		go_code;
+	int			go_code;
 }				t_game;
 
 t_game			new_program(int w, int h, char *window_title);
+int				init_window(t_window *r_w_ptr, t_map *m_ptr);
 int				exit_program(t_game *game);
 
-void			read_from_path(int fd, t_game *g_ptr);
+void			read_from_path(int fd, t_map *m_ptr);
 void			load_asset(t_game *g_ptr);
-void 			locate_player(t_game *g_ptr);
+void			locate_player(t_game *g_ptr);
 
-int	is_valid_map(t_game *g_ptr);
-int	is_valid_ext(t_game *g_ptr);
-int is_surrounded_by_wall(t_game *g_ptr);
-int is_square(t_game *g_ptr);
-int can_reach_all(t_game *g_ptr);
+void			get_map_size(t_map *m_ptr);
+int				is_valid_map(t_game *g_ptr);
+int				is_surrounded_by_wall(t_map *m_ptr);
+int				is_rectangle(t_map *m_ptr);
+int				can_reach_all(t_map *m_ptr);
 
+void			free_all(t_game *g_ptr);
+void			free_map(t_map *m_ptr);
 
-void open_portal(t_game *g_ptr);
+void			free_graphic(t_game *g_ptr);
+void			open_portal(t_game *g_ptr);
 
-void			print_map(t_game *g_ptr);
+void			count_items(t_game *g_ptr, t_map *m_ptr);
+
+int				have_required(t_game *g_ptr);
+
+int				check_empty_line(t_map *m_ptr);
+void			print_map(t_map *m_ptr);
 
 int				paint(t_game *g_ptr);
 void			paint_fr(t_game *g_ptr, void *img, int col, int row);
 
 void			process_input(int keycode, t_game *g_ptr);
 int				read_keys(int keycode, t_game *g_ptr);
-int game_over(t_game *g_ptr);
+int				game_over(t_game *g_ptr);
 void			process_movement(t_game *g_ptr, int n_row, int n_col);
 #endif // GAME_H

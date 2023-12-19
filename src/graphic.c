@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 08:28:39 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/14 15:54:49 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:36:25 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	load_asset(t_game *g_ptr)
 	int	width;
 	int	height;
 
-	//	g_ptr->sprite.player = mlx_xpm_file_to_image(g_ptr->mlx_ptr,
-	//			"assets/xpm/player_default.xpm", &width, &height);
 	g_ptr->sprite.player_up = mlx_xpm_file_to_image(g_ptr->mlx_ptr,
 			"assets/xpm/player_up.xpm", &width, &height);
 	g_ptr->sprite.player_right = mlx_xpm_file_to_image(g_ptr->mlx_ptr,
