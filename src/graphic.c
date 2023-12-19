@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 08:28:39 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:36:25 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:55:38 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,9 @@ int	paint(t_game *g_ptr)
 			if (g_ptr->real_map.map[row][col] == PATH)
 				paint_fr(g_ptr, g_ptr->sprite.path, col, row);
 			if (g_ptr->real_map.map[row][col] == PLAYER)
-			{
-				if (g_ptr->player.direction == P_UP)
-					paint_fr(g_ptr, g_ptr->sprite.player_up, col, row);
-				else if (g_ptr->player.direction == P_RIGHT)
-					paint_fr(g_ptr, g_ptr->sprite.player_right, col, row);
-				else if (g_ptr->player.direction == P_DOWN)
-					paint_fr(g_ptr, g_ptr->sprite.player_down, col, row);
-				else if (g_ptr->player.direction == P_LEFT)
-					paint_fr(g_ptr, g_ptr->sprite.player_left, col, row);
-			}
+				paint_player(g_ptr, col, row);
 			if (g_ptr->real_map.map[row][col] == EXIT)
-			{
-				if (g_ptr->portal_open == TRUE)
-					paint_fr(g_ptr, g_ptr->sprite.exit_open, col, row);
-				else
-					paint_fr(g_ptr, g_ptr->sprite.exit_close, col, row);
-			}
+				paint_exit(g_ptr, col, row);
 			if (g_ptr->real_map.map[row][col] == BITBERRY)
 				paint_fr(g_ptr, g_ptr->sprite.bit_berry, col, row);
 			col++;
@@ -83,4 +69,24 @@ void	paint_fr(t_game *g_ptr, void *img, int col, int row)
 {
 	mlx_put_image_to_window(g_ptr->mlx_ptr, g_ptr->win_ptr, img, (col
 			* SPRITE_SIZE), (row * SPRITE_SIZE));
+}
+
+void	paint_player(t_game *g_ptr, int col, int row)
+{
+	if (g_ptr->player.direction == P_UP)
+		paint_fr(g_ptr, g_ptr->sprite.player_up, col, row);
+	else if (g_ptr->player.direction == P_RIGHT)
+		paint_fr(g_ptr, g_ptr->sprite.player_right, col, row);
+	else if (g_ptr->player.direction == P_DOWN)
+		paint_fr(g_ptr, g_ptr->sprite.player_down, col, row);
+	else if (g_ptr->player.direction == P_LEFT)
+		paint_fr(g_ptr, g_ptr->sprite.player_left, col, row);
+}
+
+void	paint_exit(t_game *g_ptr, int col, int row)
+{
+	if (g_ptr->portal_open == TRUE)
+		paint_fr(g_ptr, g_ptr->sprite.exit_open, col, row);
+	else
+		paint_fr(g_ptr, g_ptr->sprite.exit_close, col, row);
 }

@@ -6,13 +6,11 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:34:40 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 01:57:21 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game.h"
-#include "../include/window.h"
-#include <fcntl.h>
 
 void	first_run(t_game *g_ptr, int fd)
 {
@@ -86,41 +84,5 @@ int	game_over(t_game *g_ptr)
 			ft_printf("%s\n", MESSAGE_SKILL_ISSUE);
 		exit_program(g_ptr);
 	}
-	return (0);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_game	real_g;
-	int		fd;
-
-	if (argc != 2 || ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber",
-			4) != 0)
-	{
-		ft_printf("Error\n");
-		ft_printf("Usage: ./so_long [map.ber]\n");
-		return (1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printf("Error\n");
-		ft_printf("Map not found\n");
-		return (1);
-	}
-	first_run(&real_g, fd);
-	close(fd);
-	init_window(&real_g.window, &real_g.test_map);
-	real_g = new_program(real_g.window.width, real_g.window.height,
-			WINDOW_TITLE);
-	if (!real_g.win_ptr || !real_g.mlx_ptr)
-		return (1);
-	fd = open(argv[1], O_RDONLY);
-	start_game(&real_g, fd);
-	close(fd);
-	mlx_hook(real_g.win_ptr, 17, 0, game_over, &real_g);
-	mlx_key_hook(real_g.win_ptr, read_keys, &real_g);
-	mlx_loop_hook(real_g.mlx_ptr, update_game, &real_g);
-	mlx_loop(real_g.mlx_ptr);
 	return (0);
 }

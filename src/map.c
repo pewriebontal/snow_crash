@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:23 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:16:05 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 02:27:33 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,36 +105,3 @@ void	get_map_size(t_map *m_ptr)
 	ft_printf("map_col: %d\n", m_ptr->map_col);
 	ft_printf("map_row: %d\n", m_ptr->map_row);
 }
-
-/*
-
-
-
-
-int	ft_read_map(int fd, t_game *g_ptr)
-{
-		int             i;
-		char    *buffer;
-
-		g_ptr->real_map
-				= ft_calloc(g_ptr->map_init.first_read_matrice + 1,
-						sizeof(char *));
-		if (!g_ptr->map_init.matrice)
-		{
-				ft_free_map(g_ptr);
-				return (0);
-		}
-		i = 0;
-		buffer = NULL;
-		while (1)
-		{
-				buffer = get_next_line(fd);
-				if (!buffer)
-						break ;
-				g_ptr->map_init.matrice[i] = buffer;
-				i++;
-		}
-		if (!ft_check_read(g_ptr))
-				return (0);
-		return (1);
-}*/

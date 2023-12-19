@@ -6,7 +6,7 @@
 #    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2023/12/20 01:39:12 by mkhaing          ###   ########.fr        #
+#    Updated: 2023/12/20 02:21:02 by mkhaing          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ SO_LONG_SRC=$(SRC_DIR)game.c \
 		$(SRC_DIR)graphic.c \
 		$(SRC_DIR)movement.c \
 		$(SRC_DIR)validator.c \
+		$(SRC_DIR)validator2.c \
 		$(SRC_DIR)free.c \
+		$(SRC_DIR)main.c
 			
 	
 SRCS	= $(SO_LONG_SRC)
