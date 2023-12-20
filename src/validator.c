@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:59:35 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 02:29:42 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 11:29:36 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,35 @@ int	is_valid_map(t_game *g_ptr)
 	return (TRUE);
 }
 
-void	validator_algo(t_game *g_ptr, int row, int col)
+void	validator_algo(t_map *m_ptr, int row, int col)
 {
 }
 
 int	is_surrounded_by_wall(t_map *m_ptr)
 {
+	int	row;
+	int	col;
+
+	row = 0;
+	while (m_ptr->map[row])
+	{
+		col = 0;
+		while (m_ptr->map[row][col] && m_ptr->map[row][col] != '\n')
+		{
+			if (row == 0 || row == m_ptr->map_row - 1)
+			{
+				if (m_ptr->map[row][col] != WALL)
+					return (FALSE);
+			}
+			else if (col == 0 || col == m_ptr->map_col - 1)
+			{
+				if (m_ptr->map[row][col] != WALL)
+					return (FALSE);
+			}
+			col++;
+		}
+		row++;
+	}
 	return (TRUE);
 }
 

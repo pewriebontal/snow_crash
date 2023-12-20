@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:04 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:57:21 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:57:01 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	first_run(t_game *g_ptr, int fd)
 	count_items(g_ptr, &g_ptr->test_map);
 	print_map(&g_ptr->test_map);
 	get_map_size(&g_ptr->test_map);
+	locate_player(g_ptr, &g_ptr->test_map);
 	if (is_valid_map(g_ptr) == FALSE)
 	{
 		ft_printf("Error\n");
@@ -43,7 +44,7 @@ void	start_game(t_game *g_ptr, int fd)
 	print_map(&g_ptr->real_map);
 	load_asset(g_ptr);
 	get_map_size(&g_ptr->real_map);
-	locate_player(g_ptr);
+	locate_player(g_ptr, &g_ptr->real_map);
 	g_ptr->player.direction = P_RIGHT;
 	g_ptr->player.move_count = 0;
 	g_ptr->is_use_cheat = FALSE;

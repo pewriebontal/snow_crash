@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 02:32:33 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:55:45 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void			process_input(int keycode, t_game *g_ptr);
 
 void			read_from_path(int fd, t_map *m_ptr);
 void			print_map(t_map *m_ptr);
-void			locate_player(t_game *g_ptr);
+void			locate_player(t_game *g_ptr, t_map *m_ptr);
 void			get_map_size(t_map *m_ptr);
 
 void			open_portal(t_game *g_ptr);
@@ -183,7 +183,7 @@ void			process_exit(t_game *g_ptr, int new_row, int new_col);
 void			process_bitberry(t_game *g_ptr, int new_row, int new_col);
 
 int				is_valid_map(t_game *g_ptr);
-void			validator_algo(t_game *g_ptr, int row, int col);
+void			validator_algo(t_map *m_ptr, int row, int col);
 int				is_surrounded_by_wall(t_map *m_ptr);
 int				can_reach_all(t_map *m_ptr);
 

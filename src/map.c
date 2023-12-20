@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:23 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 02:27:33 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:58:54 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,23 @@ void	print_map(t_map *m_ptr)
 	}
 }
 
-void	locate_player(t_game *g_ptr)
+void	locate_player(t_game *g_ptr, t_map *m_ptr)
 {
 	int	row;
 	int	col;
 
 	row = 0;
-	while (g_ptr->real_map.map[row])
+	while (m_ptr->map[row])
 	{
 		col = 0;
-		while (g_ptr->real_map.map[row][col])
+		while (m_ptr->map[row][col])
 		{
-			if (g_ptr->real_map.map[row][col] == PLAYER)
+			if (m_ptr->map[row][col] == PLAYER)
 			{
 				g_ptr->player.row = row;
 				g_ptr->player.col = col;
+				ft_printf("PLAYER LOCATED: player row: %d\n",
+					g_ptr->player.row);
 				return ;
 			}
 			col++;
