@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:25:32 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 10:07:49 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:03:52 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,13 @@ int	exit_program(t_game *g_ptr)
 {
 	if (g_ptr)
 	{
-		free_all(g_ptr);
-		mlx_destroy_window(g_ptr->mlx_ptr, g_ptr->win_ptr);
-		mlx_destroy_display(g_ptr->mlx_ptr);
+		if (g_ptr->sprite.player_up)
+			free_all(g_ptr);
+		if (g_ptr->mlx_ptr && g_ptr->win_ptr)
+		{
+			mlx_destroy_window(g_ptr->mlx_ptr, g_ptr->win_ptr);
+			mlx_destroy_display(g_ptr->mlx_ptr);
+		}
 		if (g_ptr->mlx_ptr)
 		{
 			free(g_ptr->mlx_ptr);

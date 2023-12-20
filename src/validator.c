@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:59:35 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 11:29:36 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:05:48 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,48 @@ int	is_valid_map(t_game *g_ptr)
 		return (FALSE);
 	else if (is_rectangle(&g_ptr->test_map) == FALSE)
 		return (FALSE);
-	else if (can_reach_all(&g_ptr->test_map) == FALSE)
-		return (FALSE);
 	else if (have_required(g_ptr) == FALSE)
 		return (FALSE);
 	else if (is_surrounded_by_wall(&g_ptr->test_map) == FALSE)
 		return (FALSE);
+	else if (can_reach_all(g_ptr, &g_ptr->test_map) == FALSE)
+		return (FALSE);
 	return (TRUE);
+}
+
+void	init_moves(int moves[4][2])
+{
+	moves[0][0] = -1;
+	moves[0][1] = 0;
+	moves[1][0] = 1;
+	moves[1][1] = 0;
+	moves[2][0] = 0;
+	moves[2][1] = -1;
+	moves[3][0] = 0;
+	moves[3][1] = 1;
 }
 
 void	validator_algo(t_map *m_ptr, int row, int col)
 {
+	int	new_row;
+	int	new_col;
+	int	i;
+	int	moves[4][2];
+
+	init_moves(moves);
+	m_ptr->map[row][col] = 'V';
+	i = 0;
+	while (i < 4)
+	{
+		new_row = row + moves[i][0];
+		new_col = col + moves[i][1];
+		if (new_row >= 0 && new_row < m_ptr->map_row && new_col >= 0
+			&& new_col < m_ptr->map_col && (m_ptr->map[new_row][new_col] == 'C'
+			|| m_ptr->map[new_row][new_col] == '0'
+			|| m_ptr->map[new_row][new_col] == 'E'))
+			validator_algo(m_ptr, new_row, new_col);
+		i++;
+	}
 }
 
 int	is_surrounded_by_wall(t_map *m_ptr)
@@ -59,7 +90,25 @@ int	is_surrounded_by_wall(t_map *m_ptr)
 	return (TRUE);
 }
 
-int	can_reach_all(t_map *m_ptr)
+int	can_reach_all(t_game *g_ptr, t_map *m_ptr)
 {
+	int	row;
+	int	col;
+
+	validator_algo(m_ptr, g_ptr->player.row, g_ptr->player.col);
+	row = 0;
+	while (m_ptr->map[row])
+	{
+		col = 0;
+		while (m_ptr->map[row][col] && m_ptr->map[row][col] != '\n')
+		{
+			if (m_ptr->map[row][col] == 'C' || m_ptr->map[row][col] == 'E')
+			{
+				return (FALSE);
+			}
+			col++;
+		}
+		row++;
+	}
 	return (TRUE);
 }

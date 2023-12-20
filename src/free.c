@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 01:37:21 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 10:07:03 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:05:44 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,18 @@ void	free_graphic(t_game *g_ptr)
 
 void	free_all(t_game *g_ptr)
 {
-	free_map(&g_ptr->real_map);
-	free_graphic(g_ptr);
+	if (g_ptr->test_map.map)
+	{
+		free_map(&g_ptr->test_map);
+		g_ptr->test_map.map = NULL;
+	}
+	if (g_ptr->real_map.map)
+	{
+		free_map(&g_ptr->real_map);
+		g_ptr->real_map.map = NULL;
+	}
+	if (g_ptr->sprite.player_up)
+	{
+		free_graphic(g_ptr);
+	}
 }
