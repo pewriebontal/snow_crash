@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 02:20:28 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 02:30:59 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/22 21:14:08 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,13 @@ int	is_rectangle(t_map *m_ptr)
 
 	if (m_ptr == NULL || m_ptr->map == NULL || m_ptr->map[0] == NULL)
 		return (FALSE);
-	ft_printf("passed 1\n");
 	if (m_ptr->map_row <= 0 || m_ptr->map_col <= 0)
 		return (FALSE);
-	ft_printf("passed 2\n");
 	first_row_length = ft_strlen(m_ptr->map[0]);
-	ft_printf("first_row_length: %d\n", first_row_length);
 	i = 1;
-	while (i < m_ptr->map_row && ft_strlen(m_ptr->map[i]) == first_row_length)
+	while (i < m_ptr->map_row
+		&& (int)ft_strlen(m_ptr->map[i]) == first_row_length)
 		i++;
-	ft_printf("i: %d\n", i);
-	ft_printf("passed 3\n");
 	if (i == m_ptr->map_row)
 		return (TRUE);
 	else
@@ -69,10 +65,7 @@ void	count_items(t_game *g_ptr, t_map *m_ptr)
 	int	col;
 
 	if (g_ptr == NULL || m_ptr->map == NULL)
-	{
-		ft_printf("Error MAP count items\n");
 		return ;
-	}
 	row = 0;
 	while (m_ptr->map[row] != NULL)
 	{

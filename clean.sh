@@ -1,1 +1,3 @@
-rm src/*.o
+rm ./src/*.o
+rm so_long
+

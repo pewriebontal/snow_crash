@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:59:35 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 16:05:48 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/22 21:28:47 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int	is_valid_map(t_game *g_ptr)
 {
 	if (check_empty_line(&g_ptr->test_map) == FALSE)
-		return (FALSE);
-	else if (is_rectangle(&g_ptr->test_map) == FALSE)
-		return (FALSE);
-	else if (have_required(g_ptr) == FALSE)
-		return (FALSE);
-	else if (is_surrounded_by_wall(&g_ptr->test_map) == FALSE)
-		return (FALSE);
-	else if (can_reach_all(g_ptr, &g_ptr->test_map) == FALSE)
-		return (FALSE);
+		return (ft_printf("[Error] Empty lines in map\n"), FALSE);
+	if (is_rectangle(&g_ptr->test_map) == FALSE)
+		return (ft_printf("[Error] Map is not in valid shape.\n"), FALSE);
+	if (have_required(g_ptr) == FALSE)
+		return (ft_printf("[Error] Map is missing required items.\n"), FALSE);
+	if (is_surrounded_by_wall(&g_ptr->test_map) == FALSE)
+		return (ft_printf("[Error] Map is not surrounded by wall\n"), FALSE);
+	if (can_reach_all(g_ptr, &g_ptr->test_map) == FALSE)
+		return (ft_printf("[Error] Items is not reachable\n"), FALSE);
 	return (TRUE);
 }
 

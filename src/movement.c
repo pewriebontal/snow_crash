@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:40:52 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:50:03 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/22 21:13:35 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	open_portal(t_game *g_ptr)
 {
 	if (g_ptr->portal_open == FALSE && g_ptr->count.berry == 0)
 	{
-		ft_printf("exit: %d\n", g_ptr->count.exit);
-		ft_printf("player: %d\n", g_ptr->count.player);
-		ft_printf("berry: %d\n", g_ptr->count.berry);
-		ft_printf("[Message] Portal Opened\n");
+		ft_printf("[Message] Portal Opened!\n");
 		g_ptr->portal_open = TRUE;
 	}
 }
@@ -45,7 +42,7 @@ void	process_movement(t_game *g_ptr, int n_row, int n_col)
 	{
 		if (g_ptr->portal_open == TRUE)
 		{
-			process_exit(g_ptr, new_row, new_col);
+			process_exit(g_ptr);
 		}
 		else
 			return ;
@@ -69,7 +66,7 @@ void	process_path(t_game *g_ptr, int new_row, int new_col)
 		ft_printf("[STEPS] %d\n", g_ptr->player.move_count);
 }
 
-void	process_exit(t_game *g_ptr, int new_row, int new_col)
+void	process_exit(t_game *g_ptr)
 {
 	g_ptr->player.move_count++;
 	if (g_ptr->player.move_count == 69 || g_ptr->player.move_count == 420)

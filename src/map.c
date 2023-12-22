@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:23 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 16:05:51 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:21:54 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	read_from_path(int fd, t_map *m_ptr)
 
 	i = 0;
 	buffer = NULL;
-	m_ptr->map = malloc(sizeof(char) * 69420);
+	m_ptr->map = malloc(sizeof(char) * 42069);
 	while (1)
 	{
 		buffer = get_next_line(fd);
@@ -77,8 +77,6 @@ void	locate_player(t_game *g_ptr, t_map *m_ptr)
 			{
 				g_ptr->player.row = row;
 				g_ptr->player.col = col;
-				ft_printf("PLAYER LOCATED: player row: %d\n",
-					g_ptr->player.row);
 				return ;
 			}
 			col++;
@@ -102,8 +100,6 @@ void	get_map_size(t_map *m_ptr)
 		}
 		row++;
 	}
-	m_ptr->map_col = col - 1;
+	m_ptr->map_col = (col - 1);
 	m_ptr->map_row = row;
-	ft_printf("map_col: %d\n", m_ptr->map_col);
-	ft_printf("map_row: %d\n", m_ptr->map_row);
 }

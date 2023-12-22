@@ -6,7 +6,7 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 15:55:50 by mkhaing          ###   ########.fr       */
+/*   Updated: 2023/12/22 21:40:49 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,35 @@
 # define GO_LOSE 6666
 # define GO_QUIT 7777
 # define GO_CHEAT 8888
+
+// ====================	END ====
+# define ASCII_ART \
+	"░       ░░  \
+░░░░  ░        ░        ░░      \
+░░        ░░      ░░░      ░░░  \
+    ░░       ░░        ░\n▒  ▒▒▒\
+▒  ▒▒  ▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒ \
+ ▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒  ▒▒▒▒\
+  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒▒▒▒\n\
+▓       ▓▓▓▓    ▓▓▓▓▓▓  ▓▓▓▓    \
+  ▓▓▓▓      ▓▓      ▓▓▓▓      ▓▓\
+  ▓▓▓▓▓▓▓  ▓▓▓▓  ▓       ▓▓     \
+ ▓▓▓\n█  ████  ████  ███████  ██\
+██  █████████████  █  ██████████\
+███  █  ████  █        █  ██████\
+█  ███████\n█       █████  █████\
+██  ████        ██      ██      \
+  ██      ███      ██  ████  █  \
+███████        █\n\n┏┓        • \
+ ┓    ┏┏┓┓  ┏┓┏┓┏┓┏┓  ┏┓  ┏━┓┓  \
+      ┓      \n┃ ┏┓┏┓┓┏┏┓┓┏┓┣┓╋ \
+ ┃┃ ┃  ┏┛┃┫┏┛ ┫  ┃┫┓┏┃┗┛┣┓┏┓┏┓╋┏\
+┓┃ ┏┓┏┓╋\n┗┛┗┛┣┛┗┫┛ ┗┗┫┛┗┗  ┗┗┛┛\
+  ┗━┗┛┗━┗┛  ┗┛┛┗┗━┛┗┛┗┛┛┗┗┗┻┗•┛┗\
+┗ ┗\n    ┛  ┛    ┛              \
+                              \n"
+
+// ====================	END ====
 
 # define W 119
 # define A 97
@@ -161,6 +190,7 @@ void			first_run(t_game *g_ptr, int fd);
 void			start_game(t_game *g_ptr, int fd);
 int				update_game(t_game *g_ptr);
 int				game_over(t_game *g_ptr);
+void			print_ascii_art(void);
 
 void			load_asset(t_game *g_ptr);
 int				paint(t_game *g_ptr);
@@ -179,7 +209,7 @@ void			get_map_size(t_map *m_ptr);
 void			open_portal(t_game *g_ptr);
 void			process_movement(t_game *g_ptr, int n_row, int n_col);
 void			process_path(t_game *g_ptr, int new_row, int new_col);
-void			process_exit(t_game *g_ptr, int new_row, int new_col);
+void			process_exit(t_game *g_ptr);
 void			process_bitberry(t_game *g_ptr, int new_row, int new_col);
 
 int				is_valid_map(t_game *g_ptr);
