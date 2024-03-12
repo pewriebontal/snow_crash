@@ -19,10 +19,10 @@ MLX_D	= ./mlx_linux
 LIBMLX	= $(MLX_D)/libmlx.a
 LIBFT	= $(LIBFT_D)/libft.a
 
-CC	= gcc
+CC	= cc
 
 CFLAGS	= -Wall -Wextra -Werror -D LINUX #-fsanitize=leak -g
-LFLAGS	= -L$(MLX_D) -lbsd -lmlx_linux -lXext -lX11 -lm -lz
+LFLAGS	= -lXext -lX11
 
 RM	= rm -f
 
@@ -44,7 +44,7 @@ OBJS	    =	${SRCS:.c=.o}
 all:		$(LIBFT) $(LIBMLX) $(NAME)
 
 $(NAME):	$(OBJS) $(LIBFT) $(LIBMLX)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LFLAGS) -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBMLX) $(LFLAGS) -o $(NAME)
 
 $(LIBMLX):
 		make -C $(MLX_D) all
