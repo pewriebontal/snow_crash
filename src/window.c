@@ -25,8 +25,7 @@ int	exit_program(t_game *g_ptr)
 {
 	if (g_ptr)
 	{
-		if (g_ptr->sprite.player_up)
-			free_all(g_ptr);
+		free_all(g_ptr);
 		if (g_ptr->mlx_ptr && g_ptr->win_ptr)
 		{
 			mlx_destroy_window(g_ptr->mlx_ptr, g_ptr->win_ptr);

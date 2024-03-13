@@ -56,15 +56,10 @@ void	free_all(t_game *g_ptr)
 	if (g_ptr->test_map.map)
 	{
 		free_map(&g_ptr->test_map);
-		g_ptr->test_map.map = NULL;
 	}
 	if (g_ptr->real_map.map)
 	{
 		free_map(&g_ptr->real_map);
-		g_ptr->real_map.map = NULL;
 	}
-	if (g_ptr->sprite.player_up)
-	{
-		free_graphic(g_ptr);
-	}
+	free_graphic(g_ptr);
 }
