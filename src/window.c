@@ -6,12 +6,12 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:25:32 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/22 21:27:35 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:38:22 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
-#include "../include/window.h"
+#include <game.h>
+#include <window.h>
 #include "../mlx_linux/mlx.h"
 
 int	init_window(t_window *w_ptr, t_map *m_ptr)
@@ -33,7 +33,7 @@ int	exit_program(t_game *g_ptr)
 		}
 		if (g_ptr->mlx_ptr)
 		{
-			free(g_ptr->mlx_ptr);
+			yeet(g_ptr->mlx_ptr);
 			g_ptr->mlx_ptr = NULL;
 		}
 		g_ptr = NULL;

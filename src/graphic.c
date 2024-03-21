@@ -6,11 +6,11 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 08:28:39 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:55:38 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:37:00 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
+#include <game.h>
 
 void	load_asset(t_game *g_ptr)
 {

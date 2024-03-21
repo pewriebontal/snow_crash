@@ -6,11 +6,11 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 01:37:21 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 16:05:44 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:37:00 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
+#include <game.h>
 
 void	free_map(t_map *m_ptr)
 {
@@ -21,10 +21,10 @@ void	free_map(t_map *m_ptr)
 	{
 		while (m_ptr->map[i])
 		{
-			free(m_ptr->map[i]);
+			yeet(m_ptr->map[i]);
 			i++;
 		}
-		free(m_ptr->map);
+		yeet(m_ptr->map);
 		m_ptr->map = NULL;
 	}
 }
@@ -59,7 +59,10 @@ void	free_all(t_game *g_ptr)
 	}
 	if (g_ptr->real_map.map)
 	{
+		free_graphic(g_ptr);
+	}
+	if (g_ptr->real_map.map)
+	{
 		free_map(&g_ptr->real_map);
 	}
-	free_graphic(g_ptr);
 }

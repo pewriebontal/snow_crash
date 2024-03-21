@@ -6,18 +6,19 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/22 21:40:49 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:31:55 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# include "../libft/ft_printf.h"
-# include "../libft/gnl.h"
-# include "../libft/libft.h"
-# include "../mlx_linux/mlx.h"
+# include <mlx.h>
 # include "window.h"
+# include <byamc/byamc.h>
+# include <byamc/ft_printf.h>
+# include <byamc/gnl.h>
+# include <byamc/gzdef.h>
 # include <stdlib.h>
 
 // GAME MAP CODES
@@ -46,7 +47,6 @@
 # define GO_LOSE 6666
 # define GO_QUIT 7777
 # define GO_CHEAT 8888
-
 // ====================	END ====
 # define ASCII_ART \
 	"░       ░░  \

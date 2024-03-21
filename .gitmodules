@@ -1,6 +1,6 @@
-[submodule "libft"]
-	path = libft
-	url = https://github.com/pewriebontal/libft
 [submodule "mlx_linux"]
 	path = mlx_linux
 	url = https://github.com/42Paris/minilibx-linux.git
+[submodule "byamc"]
+	path = byamc
+	url = https://github.com/pewriebontal/byamc

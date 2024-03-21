@@ -6,22 +6,23 @@
 #    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2023/12/22 21:12:14 by mkhaing          ###   ########.fr        #
+#    Updated: 2024/03/22 04:41:58 by mkhaing          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
 SRC_DIR	= src/
-LIBFT_D =./libft
+LIBFT_D =./byamc
 MLX_D	= ./mlx_linux
 
 LIBMLX	= $(MLX_D)/libmlx.a
-LIBFT	= $(LIBFT_D)/libft.a
+LIBFT	= $(LIBFT_D)/byamc.a
 
 CC	= cc
 
-CFLAGS	= -Wall -Wextra -Werror -D LINUX #-fsanitize=leak -g
+OPTI    = -march=native -funroll-loops -pipe -ffast-math
+CFLAGS	= -I./include -I$(MLX_D) -I$(LIBFT_D)/include -Wall -Wextra -Werror -D LINUX $(OPTI) #-fsanitize=leak -g
 LFLAGS	= -lXext -lX11
 
 RM	= rm -f

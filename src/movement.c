@@ -6,11 +6,11 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:40:52 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/22 21:13:35 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:37:00 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
+#include <game.h>
 
 void	open_portal(t_game *g_ptr)
 {

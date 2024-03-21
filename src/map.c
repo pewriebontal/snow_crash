@@ -6,12 +6,12 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:23 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/21 22:21:54 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:56:08 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
-#include "../libft/gnl.h"
+#include <game.h>
+#include <byamc/gnl.h>
 
 void	read_from_path(int fd, t_map *m_ptr)
 {
@@ -20,7 +20,7 @@ void	read_from_path(int fd, t_map *m_ptr)
 
 	i = 0;
 	buffer = NULL;
-	m_ptr->map = malloc(sizeof(char) * 42069);
+	m_ptr->map = chope(sizeof(char) * 42069);
 	while (1)
 	{
 		buffer = get_next_line(fd);
@@ -30,7 +30,7 @@ void	read_from_path(int fd, t_map *m_ptr)
 		i++;
 	}
 	m_ptr->map[i] = NULL;
-	free(buffer);
+	yeet(buffer);
 	buffer = NULL;
 }
 

@@ -6,12 +6,12 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 02:10:07 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/22 21:28:00 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:38:22 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
-#include "../include/window.h"
+#include <game.h>
+#include <window.h>
 #include <fcntl.h>
 
 int	open_file(char *filename)
@@ -35,6 +35,7 @@ void	initialize_game(t_game *real_g, int fd)
 {
 	void	*mlx_ptr;
 
+	ft_bzero(real_g, sizeof(t_game));
 	first_run(real_g, fd);
 	close(fd);
 	init_window(&real_g->window, &real_g->test_map);

@@ -2,5 +2,8 @@
     "files.exclude": {
         "**/*.o": true,
         ".idea/": true
+    },
+    "files.associations": {
+        "game.h": "c"
     }
 }

@@ -20,7 +20,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/byamc/include"
             ],
             "defines": [
                 "_DEBUG",

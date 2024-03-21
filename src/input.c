@@ -6,12 +6,12 @@
 /*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:10:18 by mkhaing           #+#    #+#             */
-/*   Updated: 2023/12/20 01:36:51 by mkhaing          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:38:22 by mkhaing          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
-#include "../include/window.h"
+#include <game.h>
+#include <window.h>
 
 int	read_keys(int keycode, t_game *g_ptr)
 {
