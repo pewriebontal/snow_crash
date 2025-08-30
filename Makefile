@@ -22,7 +22,7 @@ LIBFT	= $(LIBFT_D)/byamc.a
 CC	= cc
 
 OPTI    = -march=native -funroll-loops -pipe -ffast-math
-CFLAGS	= -I./include -I$(MLX_D) -I$(LIBFT_D)/include -Wall -Wextra -Werror -D LINUX $(OPTI) #-fsanitize=leak -g
+CFLAGS	= -I./include -I$(MLX_D) -I$(LIBFT_D)/include -Wall -Wextra -Werror -D LINUX $(OPTI) -std=gnu11  #-fsanitize=leak -g 
 LFLAGS	= -lXext -lX11
 
 RM	= rm -f
