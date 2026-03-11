@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
+/*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 07:09:49 by mkhaing           #+#    #+#             */
-/*   Updated: 2024/03/22 04:31:55 by mkhaing          ###   ########.fr       */
+/*   Created: 2025/11/25 07:09:49 by mikhaing          #+#    #+#             */
+/*   Updated: 2026/03/11 21:46:35 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# include <mlx.h>
 # include "window.h"
 # include <byamc/byamc.h>
 # include <byamc/ft_printf.h>
 # include <byamc/gnl.h>
 # include <byamc/gzdef.h>
+# include <mlx.h>
 # include <stdlib.h>
 
 // GAME MAP CODES
@@ -49,30 +49,13 @@
 # define GO_CHEAT 8888
 // ====================	END ====
 # define ASCII_ART \
-	"░       ░░  \
-░░░░  ░        ░        ░░      \
-░░        ░░      ░░░      ░░░  \
-    ░░       ░░        ░\n▒  ▒▒▒\
-▒  ▒▒  ▒▒  ▒▒▒▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒ \
- ▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒  ▒▒▒▒\
-  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒▒▒▒\n\
-▓       ▓▓▓▓    ▓▓▓▓▓▓  ▓▓▓▓    \
-  ▓▓▓▓      ▓▓      ▓▓▓▓      ▓▓\
-  ▓▓▓▓▓▓▓  ▓▓▓▓  ▓       ▓▓     \
- ▓▓▓\n█  ████  ████  ███████  ██\
-██  █████████████  █  ██████████\
-███  █  ████  █        █  ██████\
-█  ███████\n█       █████  █████\
-██  ████        ██      ██      \
-  ██      ███      ██  ████  █  \
-███████        █\n\n┏┓        • \
- ┓    ┏┏┓┓  ┏┓┏┓┏┓┏┓  ┏┓  ┏━┓┓  \
-      ┓      \n┃ ┏┓┏┓┓┏┏┓┓┏┓┣┓╋ \
- ┃┃ ┃  ┏┛┃┫┏┛ ┫  ┃┫┓┏┃┗┛┣┓┏┓┏┓╋┏\
-┓┃ ┏┓┏┓╋\n┗┛┗┛┣┛┗┫┛ ┗┗┫┛┗┗  ┗┗┛┛\
-  ┗━┗┛┗━┗┛  ┗┛┛┗┗━┛┗┛┗┛┛┗┗┗┻┗•┛┗\
-┗ ┗\n    ┛  ┛    ┛              \
-                              \n"
+	"\
+  ____  _   _  ___  __        __   ____ ____      _    ____  _   _ \n\
+ / ___|| \\ | |/ _ \\ \\ \\      / /  / ___|  _ \\    / \\  / ___|| | | |\n\
+ \\___ \\|  \\| | | | | \\ \\ /\\ / /  | |   | |_) |  / _ \\ \\___ \\| |_| |\n\
+  ___) | |\\  | |_| |  \\ V  V /   | |___|  _ <  / ___ \\ ___) |  _  |\n\
+ |____/|_| \\_|\\___/    \\_/\\_/     \\____|_| \\_\\/_/   \\_\\____/|_| |_|\n\
+\n"
 
 // ====================	END ====
 
@@ -88,7 +71,7 @@
 
 # define SECRET_KEY 93 // ]
 // ====================
-# define SPRITE_SIZE 42
+# define SPRITE_SIZE 128
 
 # define MESSAGE_ACHIEV_42_1 "[Achievement Unlocked] The Answer to Life,"
 # define MESSAGE_ACHIEV_42_2 " the Universe, and Everything!"
@@ -220,6 +203,7 @@ int				can_reach_all(t_game *g_ptr, t_map *m_ptr);
 int				have_required(t_game *g_ptr);
 int				check_empty_line(t_map *m_ptr);
 int				is_rectangle(t_map *m_ptr);
+int				has_valid_chars(t_map *m_ptr);
 void			count_items(t_game *g_ptr, t_map *m_ptr);
 
 void			free_all(t_game *g_ptr);

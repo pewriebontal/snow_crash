@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
+/*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 02:20:28 by mkhaing           #+#    #+#             */
-/*   Updated: 2024/03/22 04:37:00 by mkhaing          ###   ########.fr       */
+/*   Created: 2025/12/20 02:20:28 by mikhaing          #+#    #+#             */
+/*   Updated: 2026/03/11 21:46:35 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,31 @@ int	is_rectangle(t_map *m_ptr)
 		return (TRUE);
 	else
 		return (FALSE);
+}
+
+int	has_valid_chars(t_map *m_ptr)
+{
+	int		row;
+	int		col;
+	char	tile;
+
+	if (m_ptr == NULL || m_ptr->map == NULL)
+		return (FALSE);
+	row = 0;
+	while (m_ptr->map[row] != NULL)
+	{
+		col = 0;
+		while (m_ptr->map[row][col] != '\0')
+		{
+			tile = m_ptr->map[row][col];
+			if (tile != WALL && tile != PATH && tile != PLAYER && tile != EXIT
+				&& tile != BITBERRY && tile != '\n')
+				return (FALSE);
+			col++;
+		}
+		row++;
+	}
+	return (TRUE);
 }
 
 void	count_items(t_game *g_ptr, t_map *m_ptr)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+         #
+#    By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/23 20:27:07 by mkhaing           #+#    #+#              #
-#    Updated: 2024/03/22 04:41:58 by mkhaing          ###   ########.fr        #
+#    Created: 2025/11/23 20:27:07 by mikhaing          #+#    #+#              #
+#    Updated: 2026/03/11 21:46:35 by mikhaing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJS	    =	${SRCS:.c=.o}
 
 all:		$(LIBFT) $(LIBMLX) $(NAME)
 
-$(NAME):	$(OBJS) $(LIBFT) $(LIBMLX)
+$(NAME):	$(OBJS) $(LIBFT) $(LIBMLX) ./include/game.h ./include/window.h
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBMLX) $(LFLAGS) -o $(NAME)
 
 $(LIBMLX):

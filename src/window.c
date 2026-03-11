@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhaing <0x@bontal.net>                    +#+  +:+       +#+        */
+/*   By: mikhaing <0x@bontal.net>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 17:25:32 by mkhaing           #+#    #+#             */
-/*   Updated: 2024/03/22 04:38:22 by mkhaing          ###   ########.fr       */
+/*   Created: 2025/12/01 17:25:32 by mikhaing          #+#    #+#             */
+/*   Updated: 2026/03/11 21:46:35 by mikhaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../mlx_linux/mlx.h"
 #include <game.h>
 #include <window.h>
-#include "../mlx_linux/mlx.h"
 
 int	init_window(t_window *w_ptr, t_map *m_ptr)
 {

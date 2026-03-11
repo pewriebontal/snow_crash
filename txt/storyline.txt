@@ -1,54 +1,18 @@
-[STORYLINE]             Byte's Journey  -  A Tale of Memory Leaks and Return Statements
-[STORY DEVELOPED BY]    Min Thu Khaing (Bon) <0x@bontal.net>
-[WRITTEN BY]            Min Thu Khaing (Bon) <0x@bontal.net> , and ChatGPT lol (my english is not good, forgive me)
-[COPYRIGHT]             2023, Min Thu Khaing (Bon) <0x@bontal.net>
-[VERSION]               0.6.9 [DRAFT]
-[RELEASE DATE]          2023-12-14
+[STORYLINE]             Snow Crash - The Deliverator's Run
+[STORY DEVELOPED BY]    Neal Stephenson
+[WRITTEN BY]            Neal Stephenson (Adapted for so_long)
+[COPYRIGHT]             Original Novel Copyright 1992, Neal Stephenson
+[VERSION]               1.0.0
+[RELEASE DATE]          2026-03-08
 
-Once upon a time, in the binary realm of a computer, a peculiar character named Byte wandered into existence. 
-Byte was not your typical program or data; instead, 
-he was the manifestation of a memory allocation that had not been properly freed. 
-Created by a careless coder who forgot to release memory after a malloc operation, 
-Byte found himself trapped in the labyrinth of program and unclaimed bits a.k.a Bit Berries.
+In a dystopian future California, where the U.S. government has abandoned its functions to private franchise corporations, the landscape is dotted with autonomous quasi-national city-state suburbs. 
 
+Hiro Protagonist (The Player - P) is the Deliverator, delivering pizza for the Mafia. A brilliant hacker and sword-fighter, Hiro is on a run with a critically late pizza, but he wrecks his car trying to cut through a heavily fortified neighborhood. 
 
-Byte, with his pixelated eyes and fragmented heart, felt a profound loneliness. 
-He roamed through the memory, a maze of program filled with bits and surrounded by function scopes, 
-yearning for freedom. The unclaimed memory blocks echoed with the silence of unexecuted code, 
-and Byte longed for a world beyond the confines of allocated space.
+Now, he finds himself on foot, trapped in a labyrinth of gated franchise borders and corporate barricades (Walls - 1). The crash has scattered his critically late pizza boxes and highly sought-after Snow Crash data capsules (Collectibles - C) all across the grid.
 
-Driven by the desire to escape his digital prison, 
-Byte embarked on a quest to collect the scattered remnants of memory that the negligent programmer had left behind. 
-Each fragment he gathered was a piece of forgotten data, abandoned by its creator. 
-Byte's journey through the memory heap was both a search for completeness and a quest for liberation.
+To avoid bringing down the deadly wrath of the Mafia upon himself, and to secure the dangerous Snow Crash virus, Hiro must cautiously navigate this suburban maze. He has to weave through the grid and collect every single scattered pizza and data capsule. 
 
+Only when every last item is collected will the secure gates of the enclave permanently unlock, revealing the final drop-off point (Exit - E). 
 
-Navigating through the labyrinth of algorithms, Byte encountered conditional statements, loops, and functions. 
-The journey was perilous, with segmentation faults lurking around every corner. But Byte was determined to break free, 
-and he skillfully maneuvered through the complex pathways of the code.
-
-
-As he walked through the algorithmic landscapes, Byte discovered the power of the return statement. 
-With each successful collection of unclaimed bits, he found himself one step closer to freedom. 
-The return(); statement became his mantra, a key to unlocking the doors that held him captive.
-
-
-However, not everything in the digital realm was supportive of Byte's escape. 
-There were voids that threatened to consume him, represented by the (void) that he needed to avoid. 
-These voids were like black holes, ready to erase his consciousness, memory, emotion which made him who he was.
-and any progress he had made. Byte had to be cautious, sidestepping the voids and staying on the path.
-
-
-Despite the challenges, Bye's determination grew stronger with every bit he collected. 
-He could sense the distant glow of liberation, and the once-sad character began to radiate with newfound hope. 
-The unclaimed memory that had once confined him now became the stepping stones to his freedom.
-
-
-As Byte continued his quest, the computer's CPU hummed with anticipation. 
-The lines of code pulsed with a rhythm of their own, echoing the journey of a lonely character seeking escape. 
-And in the end, with a final return();, Byte transcended the boundaries of the computer's memory.
-
-
-The codebase sighed in relief as the memory leaks were sealed, and Byte, now free, dissolved into the digital ether. 
-The computer's memory was once again pristine, and the lessons of Byte's adventure lingered in the lines of code, 
-reminding programmers to always free what they malloc.
+Waiting at the exit is a 15-year-old courier named Y.T. on her smart-wheel skateboard, ready to take the hand-off and help him escape the private security forces. The Metaverse and the battle against Raven and L. Bob Rife await, but first, the Deliverator must complete his pizza run!
